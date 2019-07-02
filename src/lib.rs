@@ -17,7 +17,16 @@ pub mod raytracer {
 
             Vec3 { e1: e1, e2: e2, e3: e3}
         }
-}
+    }
+    
+    impl ops::Mul<f32> for Vec3 {
+        type Output = Vec3;
+
+        fn mul(self, t: f32) -> Vec3 {
+            return Vec3 {e1: t* self.e1, e2: t*self.e2, e3: t*self.e3}
+        }
+    }
+
 
     pub struct Ray {
         A: Vec3,
@@ -34,7 +43,7 @@ pub mod raytracer {
         }
 
         pub fn point_at_parameter(self, t :f32) -> Vec3 {
-            self.A + self.B
+            self.A + (self.B*t)
         }
     }
 }

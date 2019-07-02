@@ -1,10 +1,17 @@
 pub mod raytracer {
     use std::ops;
 
+    #[derive(Clone)]
     pub struct Vec3 {
         pub e1: f32,
         pub e2: f32,
         pub e3: f32
+    }
+
+    impl Vec3 {
+        fn length(self) -> f32 {
+            self.e1*self.e1 + self.e1*self.e1 + self.e1*self.e1
+        }
     }
 
     impl ops::Add<Vec3> for Vec3 {
@@ -18,6 +25,14 @@ pub mod raytracer {
             Vec3 { e1: e1, e2: e2, e3: e3}
         }
     }
+
+    impl ops::Div<f32> for Vec3 {
+        type Output = Vec3;
+
+        fn div(self, t: f32) -> Vec3 {
+            Vec3 { e1: self.e1/t, e2: self.e2/t, e3: self.e3/t}
+        }
+    }
     
     impl ops::Mul<f32> for Vec3 {
         type Output = Vec3;
@@ -27,7 +42,7 @@ pub mod raytracer {
         }
     }
 
-
+    #[derive(Clone)]
     pub struct Ray {
         A: Vec3,
         B: Vec3
@@ -44,6 +59,13 @@ pub mod raytracer {
 
         pub fn point_at_parameter(self, t :f32) -> Vec3 {
             self.A + (self.B*t)
+        }
+
+        pub fn color(self) -> Vec3 {
+            let unit_direction: Vec3 = self.direction();
+            let length = unit_direction.clone().length();
+
+            unit_direction / length
         }
     }
 }

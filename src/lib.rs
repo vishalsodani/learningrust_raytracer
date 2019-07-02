@@ -1,8 +1,7 @@
 pub mod raytracer {
     use std::ops;
 
-    #[derive(Clone)]
-    #[derive(Copy)]
+    #[derive(Copy, Clone)]
     pub struct Vec3 {
         pub e1: f32,
         pub e2: f32,
@@ -47,7 +46,6 @@ pub mod raytracer {
         }
     }
 
-    #[derive(Clone)]
     pub struct Ray {
         pub A: Vec3,
         pub B: Vec3

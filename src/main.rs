@@ -9,6 +9,9 @@ fn main() -> Result<(), std::io::Error> {
     let path = Path::new("hello.ppm");
 
     let mut file = File::create(&path)?;
+    file.write("P3")?;
+    file.write("{} {}", nx, ny)?;
+    file.write(255)?;
 
     Ok(())
 }

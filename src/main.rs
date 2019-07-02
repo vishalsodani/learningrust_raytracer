@@ -1,5 +1,4 @@
 use std::fs::File;
-use std::error::Error;
 use std::path::Path;
 use std::io::Write;
 
@@ -22,8 +21,6 @@ fn main() -> Result<(), std::io::Error> {
             let r: f32 = m as f32 / nx as f32 ;
             let g: f32 = n as f32 / ny as f32 ;
             let b: f32 = 0.2;
-
-            println!("{}", r);
 
             let ir: i32 = (255.99 * r) as i32;
             let ig: i32 = (255.99 * g) as i32;

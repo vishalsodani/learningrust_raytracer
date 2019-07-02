@@ -11,9 +11,9 @@ fn main() -> Result<(), std::io::Error> {
     let path = Path::new("hello.ppm");
 
     let mut file = File::create(&path)?;
-    write!(file, "P3\n")?;
-    write!(file, "{} {}\n", nx, ny)?;
-    write!(file, "{}\n", 255)?;
+    writeln!(file, "P3")?;
+    writeln!(file, "{} {}", nx, ny)?;
+    writeln!(file, "{}", 255)?;
 
     let lower_left_corner: Vec3 = Vec3 { e1:-2.0, e2:-1.0, e3:-1.0};
     let horizontal: Vec3 = Vec3 { e1:4.0, e2:0.0, e3:0.0};
@@ -33,7 +33,7 @@ fn main() -> Result<(), std::io::Error> {
             let ig: i32 = (255.99 * col.e2) as i32;
             let ib: i32 = (255.99 * col.e3) as i32;
 
-            write!(file, "{} {} {}\n", ir, ig, ib)?;
+            writeln!(file, "{} {} {}", ir, ig, ib)?;
         }
     }
 

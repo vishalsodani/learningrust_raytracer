@@ -26,7 +26,7 @@ pub mod raytracer {
             let e2: f32 = self.e2 + _rhs.e2;
             let e3: f32 = self.e3 + _rhs.e3;
 
-            Vec3 { e1: e1, e2: e2, e3: e3}
+            Vec3 { e1, e2, e3}
         }
     }
 

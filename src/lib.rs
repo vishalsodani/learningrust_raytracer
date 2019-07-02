@@ -2,6 +2,7 @@ pub mod raytracer {
     use std::ops;
 
     #[derive(Clone)]
+    #[derive(Copy)]
     pub struct Vec3 {
         pub e1: f32,
         pub e2: f32,
@@ -48,8 +49,8 @@ pub mod raytracer {
 
     #[derive(Clone)]
     pub struct Ray {
-        A: Vec3,
-        B: Vec3
+        pub A: Vec3,
+        pub B: Vec3
     }
 
     impl Ray {
@@ -69,7 +70,7 @@ pub mod raytracer {
             let unit_direction: Vec3 = self.direction();
             let length = unit_direction.clone().length();
 
-            let unit_direction = unit_direction / length;
+            let unit_direction :Vec3 = unit_direction / length;
             let t: f32 = (unit_direction.y()  + 1.0)*0.5;
             Vec3{e1:1.0, e2:1.0, e3: 1.0}*(1.0-t) + Vec3{e1:0.5, e2:0.7, e3:1.0}*t
         }

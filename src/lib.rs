@@ -66,7 +66,7 @@ pub mod raytracer {
 
         pub fn color(self) -> Vec3 {
             let unit_direction: Vec3 = self.direction();
-            let length = unit_direction.clone().length();
+            let length = unit_direction.length();
 
             let unit_direction :Vec3 = unit_direction / length;
             let t: f32 = (unit_direction.y()  + 1.0)*0.5;

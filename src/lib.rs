@@ -12,6 +12,10 @@ pub mod raytracer {
         fn length(self) -> f32 {
             self.e1*self.e1 + self.e1*self.e1 + self.e1*self.e1
         }
+
+        fn y(self) -> f32 {
+            self.e2
+        }
     }
 
     impl ops::Add<Vec3> for Vec3 {
@@ -65,7 +69,9 @@ pub mod raytracer {
             let unit_direction: Vec3 = self.direction();
             let length = unit_direction.clone().length();
 
-            unit_direction / length
+            let unit_direction = unit_direction / length;
+            let t: f32 = (unit_direction.y()  + 1.0)*0.5;
+            Vec3{e1:1.0, e2:1.0, e3: 1.0}*(1.0-t) + Vec3{e1:0.5, e2:0.7, e3:1.0}*t
         }
     }
 }

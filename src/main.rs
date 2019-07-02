@@ -19,8 +19,8 @@ fn main() -> Result<(), std::io::Error> {
 
     for n in (0..j).rev() {
         for m in 0..i {
-            let r: f32 = ( m as f32 / nx as f32 ) as f32;
-            let g: f32 = (n as f32 / ny as f32) as f32;
+            let r: f32 = m as f32 / nx as f32 ;
+            let g: f32 = n as f32 / ny as f32 ;
             let b: f32 = 0.2;
 
             println!("{}", r);

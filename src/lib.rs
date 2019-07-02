@@ -42,7 +42,7 @@ pub mod raytracer {
         type Output = Vec3;
 
         fn mul(self, t: f32) -> Vec3 {
-            return Vec3 {e1: t* self.e1, e2: t*self.e2, e3: t*self.e3}
+            Vec3 {e1: t* self.e1, e2: t*self.e2, e3: t*self.e3}
         }
     }
 

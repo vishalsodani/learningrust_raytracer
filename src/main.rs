@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::path::Path;
 use std::io::Write;
+use hello_graphics::raytracer::Vec3;
 
 fn main() -> Result<(), std::io::Error> {
     let nx = 200;
@@ -18,13 +19,14 @@ fn main() -> Result<(), std::io::Error> {
 
     for n in (0..j).rev() {
         for m in 0..i {
-            let r: f32 = m as f32 / nx as f32 ;
-            let g: f32 = n as f32 / ny as f32 ;
-            let b: f32 = 0.2;
+            let vec3 = Vec3 { 
+                            e1: m as f32 / nx as f32,  
+                            e2: n as f32 / ny as f32,
+                            e3: 0.2};
 
-            let ir: i32 = (255.99 * r) as i32;
-            let ig: i32 = (255.99 * g) as i32;
-            let ib: i32 = (255.99 * b) as i32;
+            let ir: i32 = (255.99 * vec3.e1) as i32;
+            let ig: i32 = (255.99 * vec3.e2) as i32;
+            let ib: i32 = (255.99 * vec3.e3) as i32;
 
             write!(file, "{} {} {}\n", ir, ig, ib)?;
         }

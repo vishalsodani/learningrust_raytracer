@@ -11,7 +11,7 @@ pub mod raytracer {
 
     impl Vec3 {
         fn length(self) -> f32 {
-            self.e1*self.e1 + self.e1*self.e1 + self.e1*self.e1
+            (self.e1*self.e1 + self.e2*self.e2 + self.e3*self.e3).sqrt()
         }
 
         fn y(self) -> f32 {

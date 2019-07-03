@@ -8,8 +8,10 @@ pub mod raytracer {
         let fa: f32 = vec1.dot(vec1);
         let fb: f32 = 2.0 * oc.dot(vec1);
         let fc: f32 = oc.dot(oc) - ( radius * radius );
-        let discriminant: f32 = fb*fb - (4.0 * fa * fc);
+        let discriminant: f32 = (fb*fb) - (4.0 * fa * fc);
+        
         if discriminant > 0.0 {
+            println!("{}", discriminant);
             return true;
         }
 
@@ -106,6 +108,10 @@ pub mod raytracer {
         }
 
         pub fn color(self) -> Vec3 {
+            if hit_sphere(Vec3 {e1: 0.0, e2: 0.0, e3: -1.0}, 0.5, self) {
+                println!("{}", "here");
+                return Vec3{e1: 1.0, e2: 0.0, e3: 0.0}
+            }
             let unit_direction: Vec3 = self.direction();
             let length = unit_direction.length();
 

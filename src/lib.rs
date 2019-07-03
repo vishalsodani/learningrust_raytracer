@@ -10,7 +10,7 @@ pub mod raytracer {
         let fc: f32 = oc.dot(oc) - ( radius * radius );
         let discriminant: f32 = fb*fb - (4.0 * fa * fc);
         if discriminant > 0.0 {
-            true
+            return true;
         }
 
         false
@@ -86,6 +86,7 @@ pub mod raytracer {
         }
     }
 
+    #[derive(Copy, Clone)]
     pub struct Ray {
         pub A: Vec3,
         pub B: Vec3,

@@ -1,9 +1,19 @@
 pub mod raytracer {
     use std::ops;
 
-    pub fn hit_sphere(center: Vec3, radius: f32, ray: Ray){
+    pub fn hit_sphere(center: Vec3, radius: f32, ray: Ray) -> bool {
 
         let oc: Vec3 = ray.origin() - center;
+        let vec1: Vec3 = ray.direction();
+        let fa: f32 = vec1.dot(vec1);
+        let fb: f32 = 2.0 * oc.dot(vec1);
+        let fc: f32 = oc.dot(oc) - ( radius * radius );
+        let discriminant: f32 = fb*fb - (4.0 * fa * fc);
+        if discriminant > 0.0 {
+            true
+        }
+
+        false
 
     }
 
@@ -21,6 +31,10 @@ pub mod raytracer {
 
         fn y(self) -> f32 {
             self.e2
+        }
+
+        fn dot(self, vec: Vec3) -> f32 {
+            (self.e1 * vec.e1) + (self.e2 * vec.e2) + (self.e3 * vec.e3)
         }
     }
 

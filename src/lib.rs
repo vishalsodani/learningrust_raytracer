@@ -1,6 +1,12 @@
 pub mod raytracer {
     use std::ops;
 
+    pub fn hit_sphere(center: Vec3, radius: f32, ray: Ray){
+
+        let oc: Vec3 = ray.origin() - center;
+
+    }
+
     #[derive(Copy, Clone)]
     pub struct Vec3 {
         pub e1: f32,
@@ -50,6 +56,18 @@ pub mod raytracer {
                 e1: t * self.e1,
                 e2: t * self.e2,
                 e3: t * self.e3,
+            }
+        }
+    }
+
+    impl ops::Sub<Vec3> for Vec3 {
+        type Output = Vec3;
+
+        fn sub(self, rhs: Vec3) -> Vec3 {
+            Vec3 {
+                e1: self.e1 - rhs.e1,
+                e2: self.e2 - rhs.e2,
+                e3: self.e3 - rhs.e3
             }
         }
     }
